@@ -6,6 +6,7 @@ TagManager:
   tags:
   - hat
   - ready
+  - speed
   layers:
   - Default
   - TransparentFX

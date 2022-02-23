@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
     public float invincibleDuration;
     public bool initialGive = true;
     public float timeToWin;
+    public bool gameStarted = false;
+    public Animator crate_anim;
+    public GameObject[] boosters;
+    public Transform[] boosterSpawnpos;
+    public float boosterSpawnTime;
+    public bool boosterSpawned;
 
     private void Awake()
     {
@@ -25,6 +31,14 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
+        }
+    }
+
+    private void Update()
+    {
+        if (gameStarted && boosterSpawned)
+        {
+            Invoke("spawnBooster",boosterSpawnTime);
         }
     }
 
@@ -50,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         if (!initialGive)
         {
-            GetPlayer(playerWithhat).walkingSpeed = 7.5f;
+            GetPlayer(playerWithhat).walkingSpeed = 7f;
             GetPlayer(playerWithhat).SetHat(false);
         }
 
@@ -80,5 +94,30 @@ public class GameManager : MonoBehaviour
         NetworkManager.instance.MainMenu();
     }
     
-    
+    [PunRPC]
+    void OpenCrate()
+    {
+        int cnt = 0;
+        foreach (PlayerMovement p in players)
+        {
+            if (p.ready)
+            {
+                cnt += 1;
+            }
+        }
+
+        if (cnt >= 2)
+        {
+            gameStarted = true;
+            crate_anim.SetTrigger("open");
+        }
+    }
+
+    public void spawnBooster()
+    {
+        int ran = Random.Range(0, boosters.Length);
+        int ranSpawn = Random.Range(0, boosterSpawnpos.Length);
+        PhotonNetwork.Instantiate(boosters[ran].name,boosterSpawnpos[ranSpawn].position,Quaternion.identity);
+        boosterSpawned = true;
+    }
 }

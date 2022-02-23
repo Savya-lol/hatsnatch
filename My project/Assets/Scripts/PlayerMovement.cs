@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
     public GameObject miniMapimage;
     public GameObject speedIcon;
     public GameObject hatIcon;
+    public GameObject speedLines;
     
     [Header("Values Setup")] 
     public float walkingSpeed = 7.5f;
@@ -49,6 +50,7 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
 
     #region privateVariables
     private float _xRot;
+    private bool hasSpeedbooster;
     private Vector3 _movementInput;
     
     Vector3 moveDirection = Vector3.zero;
@@ -86,11 +88,10 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
                 Punch();
             }
 
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                GameManager.instance.view.RPC("GiveHat",RpcTarget.AllBufferedViaServer,this.id);
-            }
+            speedIcon.SetActive(hasSpeedbooster);
+            speedLines.SetActive(hasSpeedbooster);
             hatIcon.SetActive(hatObject.activeSelf);
+            
             if (hatObject.activeInHierarchy)
             {
                 curHatTime += Time.deltaTime;
@@ -173,19 +174,7 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
                 if (!ready)
                 {
                     ready = true;
-                    int cnt = 0;
-                    foreach (PlayerMovement pm in GameManager.instance.players)
-                    {
-                        if (pm.ready)
-                        {
-                            cnt += 1;
-                        }
-                    }
-
-                    if (cnt == 2)
-                    {
-                        print("Started");
-                    }
+                    GameManager.instance.view.RPC("OpenCrate",RpcTarget.AllBufferedViaServer);
                 }
             }
         }
@@ -228,12 +217,18 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
     {
         if (other.tag == "hat")
         {
-            Destroy(other.gameObject);
-
             if (_photonView.IsMine)
             {
+                Destroy(other.gameObject);
                 GameManager.instance.view.RPC("GiveHat",RpcTarget.All,id);
             }
+        }
+
+        if (other.tag == "speed")
+        {
+            Destroy(other.gameObject);
+            GameManager.instance.boosterSpawned = false;
+            StartCoroutine("SpeedBoost");
         }
     }
     
@@ -254,5 +249,14 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
     void Punched()
     {
         CameraEffects.ShakeOnce();
+    }
+
+    IEnumerator SpeedBoost()
+    {
+        hasSpeedbooster = true;
+        walkingSpeed += .5f;
+        yield return new WaitForSeconds(GameManager.instance.boosterSpawnTime);
+        hasSpeedbooster = false;
+        walkingSpeed -= .5f;
     }
 }
