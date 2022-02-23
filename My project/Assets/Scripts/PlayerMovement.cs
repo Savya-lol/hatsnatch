@@ -96,6 +96,15 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
             {
                 curHatTime += Time.deltaTime;
             }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (!ready)
+                {
+                    print("ready");
+                    GameManager.instance.view.RPC("Ready",RpcTarget.All,id);
+                }
+            }
         }
         else
         {
@@ -166,15 +175,6 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
                         GameManager.instance.view.RPC("GiveHat",RpcTarget.All,id);
                         _photonView.RPC("Punched",RpcTarget.Others);
                     }
-                }
-            }
-
-            if (hit.collider.tag == "ready")
-            {
-                if (!ready)
-                {
-                    ready = true;
-                    GameManager.instance.view.RPC("OpenCrate",RpcTarget.AllBufferedViaServer);
                 }
             }
         }

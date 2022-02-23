@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] boosters;
     public Transform[] boosterSpawnpos;
     public float boosterSpawnTime;
+    public float curTime = 0;
     public bool boosterSpawned;
+    
 
     private void Awake()
     {
@@ -36,10 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (gameStarted && boosterSpawned)
-        {
-            Invoke("spawnBooster",boosterSpawnTime);
-        }
+        spawnBooster();
     }
 
     public PlayerMovement GetPlayer(int playerId)
@@ -95,14 +95,16 @@ public class GameManager : MonoBehaviour
     }
     
     [PunRPC]
-    void OpenCrate()
+    void Ready(int id)
     {
+        GetPlayer(id).ready = true;
         int cnt = 0;
         foreach (PlayerMovement p in players)
         {
             if (p.ready)
             {
                 cnt += 1;
+                print("added");
             }
         }
 
@@ -110,14 +112,26 @@ public class GameManager : MonoBehaviour
         {
             gameStarted = true;
             crate_anim.SetTrigger("open");
+            print("opened");
         }
     }
 
     public void spawnBooster()
     {
-        int ran = Random.Range(0, boosters.Length);
-        int ranSpawn = Random.Range(0, boosterSpawnpos.Length);
-        PhotonNetwork.Instantiate(boosters[ran].name,boosterSpawnpos[ranSpawn].position,Quaternion.identity);
-        boosterSpawned = true;
+
+        if (gameStarted && !boosterSpawned)
+        {
+            curTime += Time.deltaTime;
+            if (curTime > boosterSpawnTime)
+            {
+                print("called");
+                int ran = Random.Range(0, boosters.Length - 1);
+                int ranSpawn = Random.Range(0, boosterSpawnpos.Length - 1);
+                PhotonNetwork.Instantiate(boosters[ran].name, boosterSpawnpos[ranSpawn].position, Quaternion.identity);
+                curTime = 0;
+                print("spawnned");
+                boosterSpawned = true;
+            }
+        }
     }
 }

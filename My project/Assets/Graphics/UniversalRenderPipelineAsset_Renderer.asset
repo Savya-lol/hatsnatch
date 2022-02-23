@@ -56,7 +56,9 @@ MonoBehaviour:
   - {fileID: -749765403722746960}
   - {fileID: 602476018880198883}
   - {fileID: 8489989043873160019}
-  m_RendererFeatureMap: 495df9d026db2b56b0733a76564c98f5e3b80b43bf6c5c08539b04b30d80d275
+  - {fileID: 7874263314109448649}
+  - {fileID: 5697363269318866423}
+  m_RendererFeatureMap: 495df9d026db2b56b0733a76564c98f5e3b80b43bf6c5c08539b04b30d80d275c94162b9c300476df7f51b20b519114f
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
@@ -124,6 +126,45 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
+--- !u!114 &5697363269318866423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Booster Shown
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: Booster Shown
+    Event: 300
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 128
+      PassNames: []
+    overrideMaterial: {fileID: 0}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
 --- !u!114 &6209297471021604169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +186,45 @@ MonoBehaviour:
       LayerMask:
         serializedVersion: 2
         m_Bits: 8
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: 7d9cff2285d0919409051a4ff990810b, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 1
+    depthCompareFunction: 5
+    enableWrite: 0
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &7874263314109448649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Booster On Top
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: Booster On Top
+    Event: 300
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 128
       PassNames: []
     overrideMaterial: {fileID: 2100000, guid: 7d9cff2285d0919409051a4ff990810b, type: 2}
     overrideMaterialPassIndex: 0

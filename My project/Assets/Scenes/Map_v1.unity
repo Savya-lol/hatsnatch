@@ -4238,10 +4238,11 @@ MonoBehaviour:
   gameStarted: 0
   crate_anim: {fileID: 8387675480349932753}
   boosters:
-  - {fileID: 1207578121248129670, guid: f51fef8885587024a87a875834322220, type: 3}
+  - {fileID: 6782147737946051059, guid: f51fef8885587024a87a875834322220, type: 3}
   boosterSpawnpos:
   - {fileID: 1584472469}
   boosterSpawnTime: 6
+  curTime: 0
   boosterSpawned: 0
 --- !u!114 &841414011
 MonoBehaviour:
@@ -49668,7 +49669,7 @@ Transform:
   m_GameObject: {fileID: 4517765039045430896}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 75.691, y: 2.797, z: 13.717}
-  m_LocalScale: {x: 70.89777, y: 81.6408, z: 116.30553}
+  m_LocalScale: {x: 70.89777, y: 81.6408, z: 116.3055}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
