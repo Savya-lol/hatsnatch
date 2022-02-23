@@ -6,7 +6,6 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
-using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour,IPunObservable
 {
@@ -24,6 +23,8 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
     public CameraEffects CameraEffects;
     public GameObject miniMapcamera;
     public GameObject miniMapimage;
+    public GameObject speedIcon;
+    public GameObject hatIcon;
     
     [Header("Values Setup")] 
     public float walkingSpeed = 7.5f;
@@ -89,8 +90,11 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
             {
                 GameManager.instance.view.RPC("GiveHat",RpcTarget.AllBufferedViaServer,this.id);
             }
+            hatIcon.SetActive(hatObject.activeSelf);
             if (hatObject.activeInHierarchy)
+            {
                 curHatTime += Time.deltaTime;
+            }
         }
         else
         {

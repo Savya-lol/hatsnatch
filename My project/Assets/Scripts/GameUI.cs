@@ -9,7 +9,6 @@ public class GameUI : MonoBehaviour
 {
     public PlayerUIContainer[] playerContainers;
     public TMP_Text winText;
-
     [Header("Components")]
     public PhotonView photonView;
 
