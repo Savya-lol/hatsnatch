@@ -217,9 +217,10 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
     {
         if (other.tag == "hat")
         {
-            if (_photonView.IsMine)
-            {
+            
                 Destroy(other.gameObject);
+            if (_photonView.IsMine) 
+            {
                 GameManager.instance.view.RPC("GiveHat",RpcTarget.All,id);
             }
         }
