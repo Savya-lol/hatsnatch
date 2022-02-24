@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
                 if (!ready)
                 {
                     print("ready");
-                    GameManager.instance.view.RPC("Ready",RpcTarget.AllBuffered,id);
+                    GameManager.instance.view.RPC("Ready",RpcTarget.AllBufferedViaServer,id);
                 }
             }
         }
