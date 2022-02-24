@@ -38,10 +38,8 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
     public float punchRange;
     public float curHatTime;
     public bool ready;
-    
+    public bool canMove;
     //hide in Inspector
-    [HideInInspector]
-    public bool canMove = false;
     [HideInInspector] 
     public int id;
     [HideInInspector]

@@ -6102,7 +6102,7 @@ MonoBehaviour:
   punchRange: 1.5
   curHatTime: 0
   ready: 0
-  canMove: 1
+  canMove: 0
   id: 0
   _photonView: {fileID: 0}
 --- !u!143 &7005783606772621721
