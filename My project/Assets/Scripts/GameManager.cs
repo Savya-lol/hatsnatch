@@ -111,6 +111,10 @@ public class GameManager : MonoBehaviour
         if (cnt >= 2)
         {
             gameStarted = true;
+            foreach (PlayerMovement p in players)
+            {
+                p.canMove = true;
+            }
             crate_anim.SetTrigger("open");
             print("opened");
         }

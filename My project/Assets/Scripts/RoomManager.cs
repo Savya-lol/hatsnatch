@@ -26,6 +26,8 @@ public class RoomManager : MonoBehaviour
         player.GetComponent<PlayerMovement>().bodyTodisable.SetActive(false);
         player.GetComponent<PlayerMovement>().miniMapcamera.SetActive(true);
         player.GetComponent<PlayerMovement>().miniMapimage.SetActive(true);
+        player.GetComponent<PlayerMovement>().audio.SetActive(true);
+        player.GetComponent<PlayerMovement>().canvas.SetActive(true);
         foreach (SkinnedMeshRenderer sr in player.GetComponent<PlayerMovement>().remoteBodies)
         {
             sr.shadowCastingMode = ShadowCastingMode.ShadowsOnly;

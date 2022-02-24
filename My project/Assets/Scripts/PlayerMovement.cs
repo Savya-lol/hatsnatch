@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
     public GameObject speedIcon;
     public GameObject hatIcon;
     public GameObject speedLines;
+    public GameObject canvas;
+    public GameObject audio;
     
     [Header("Values Setup")] 
     public float walkingSpeed = 7.5f;
@@ -39,7 +41,7 @@ public class PlayerMovement : MonoBehaviour,IPunObservable
     
     //hide in Inspector
     [HideInInspector]
-    public bool canMove = true;
+    public bool canMove = false;
     [HideInInspector] 
     public int id;
     [HideInInspector]

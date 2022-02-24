@@ -6092,6 +6092,8 @@ MonoBehaviour:
   speedIcon: {fileID: 9075298375213274938}
   hatIcon: {fileID: 9075298375652059665}
   speedLines: {fileID: 587015876}
+  canvas: {fileID: 6169312189359299696}
+  audio: {fileID: 4008029531097866425}
   walkingSpeed: 7
   jumpSpeed: 8
   gravity: 20
@@ -6497,7 +6499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5648721366164331192
 Transform:
   m_ObjectHideFlags: 0
@@ -7575,7 +7577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8002599813939350366
 RectTransform:
   m_ObjectHideFlags: 0
