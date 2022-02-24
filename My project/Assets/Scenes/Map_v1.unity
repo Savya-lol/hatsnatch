@@ -4430,6 +4430,14 @@ MonoBehaviour:
   - {fileID: 6782147737946051059, guid: f51fef8885587024a87a875834322220, type: 3}
   boosterSpawnpos:
   - {fileID: 1584472469}
+  - {fileID: 533417381}
+  - {fileID: 1519517623}
+  - {fileID: 478899017}
+  - {fileID: 2343806}
+  - {fileID: 856573951}
+  - {fileID: 1740713300}
+  - {fileID: 1893026018}
+  - {fileID: 1313073427}
   boosterSpawnTime: 6
   curTime: 0
   boosterSpawned: 0
@@ -6160,7 +6168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313073426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -53.37, y: -0.31, z: -31.56}
+  m_LocalPosition: {x: -53.37, y: -1.09, z: -31.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1257990712}
