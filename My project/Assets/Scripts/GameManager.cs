@@ -123,18 +123,22 @@ public class GameManager : MonoBehaviour
     public void spawnBooster()
     {
 
-        if (gameStarted && !boosterSpawned)
+        if (gameStarted)
         {
-            curTime += Time.deltaTime;
-            if (curTime > boosterSpawnTime)
+            if (!boosterSpawned)
             {
-                print("called");
-                int ran = Random.Range(0, boosters.Length - 1);
-                int ranSpawn = Random.Range(0, boosterSpawnpos.Length - 1);
-                PhotonNetwork.Instantiate(boosters[ran].name, boosterSpawnpos[ranSpawn].position, Quaternion.identity);
-                curTime = 0;
-                print("spawnned");
-                boosterSpawned = true;
+                curTime += Time.deltaTime;
+                if (curTime > boosterSpawnTime)
+                {
+                    print("called");
+                    int ran = Random.Range(0, boosters.Length - 1);
+                    int ranSpawn = Random.Range(0, boosterSpawnpos.Length - 1);
+                    PhotonNetwork.Instantiate(boosters[ran].name, boosterSpawnpos[ranSpawn].position,
+                        Quaternion.identity);
+                    curTime = 0;
+                    print("spawnned");
+                    boosterSpawned = true;
+                }
             }
         }
     }
